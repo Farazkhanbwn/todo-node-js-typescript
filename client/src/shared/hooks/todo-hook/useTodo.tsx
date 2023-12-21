@@ -6,7 +6,6 @@ interface Todo {
   _id: string;
   todoTask: string;
   todoDescription: string;
-  // Add other properties based on your Todo structure
 }
 
 const useTodo = () => {
@@ -26,7 +25,7 @@ const useTodo = () => {
     );
 
     if (data) {
-      setMessage("Data added successfully");
+      setMessage("Data Added Successfully");
       router.push("/todo/get-all");
     }
     setError(error);
@@ -36,21 +35,18 @@ const useTodo = () => {
     const { data, error } = await TodoService.getAllTodo(token);
     if (data) {
       setTodos(data);
-    } else {
-      // Handle error
-      console.log(error);
     }
+    setError(error);
   };
 
   const deleteTodo = async (id: string, token: string) => {
     const { data, error } = await TodoService.deleteTodo(id, token);
     setTodos((prevTodos) => prevTodos.filter((todo) => todo._id !== id));
 
-    if (!data) {
+    if (data) {
       setMessage("Todo deleted successfully");
-    } else {
-      setMessage("Todo not deleted");
     }
+    setError(error);
   };
 
   return {

@@ -7,13 +7,6 @@ import { useAuthContext } from "@/shared/context/auth-context/auth-context";
 import useTodo from "@/shared/hooks/todo-hook/useTodo";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
-interface Todo {
-  _id: string;
-  todoTask: string;
-  todoDescription: string;
-  // Add other properties based on your Todo structure
-}
-
 const AddTodo = () => {
   const { getAuthToken } = useAuthContext();
   const { error, addTodos } = useTodo();
@@ -43,6 +36,7 @@ const AddTodo = () => {
     <div className=" flex justify-center mt-24">
       <form method="post" onSubmit={addTodo}>
         <h2 className="mb-5 font-bold text-2xl">Add Todo</h2>
+
         <CustomInputField
           type={CustomInputFieldType.TEXT}
           placeholder="Enter Your Task"
@@ -66,6 +60,7 @@ const AddTodo = () => {
         />
 
         <CustomButton type={CustomButtonTypes.PRIMARY}>Add Todo </CustomButton>
+
         <a
           href="/todo/get-all"
           className="rounded-full border border-black bg-black py-2 px-5 text-sm text-white transition-all hover:bg-white hover:text-black ml-14"

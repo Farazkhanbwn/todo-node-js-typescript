@@ -14,12 +14,11 @@ class AuthService extends HttpClient {
 
   static async signUp(body: Record<string, string>) {
     const { data, error } = await this.post(AuthEndPoints.SINGUP, body);
-    console.log("data ", data, "error", error);
     return { data, error };
   }
 
   static async validateUser(token: string) {
-    const { data, error } = await this.post(AuthEndPoints.VALIDATE_USER, {
+    const { data, error } = await this.get(AuthEndPoints.VALIDATE_USER, {
       ...(token && { authorization: `Bearer ${token}` }),
     });
     return { data, error };

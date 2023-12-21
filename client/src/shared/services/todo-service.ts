@@ -22,6 +22,7 @@ class TodoService extends HttpClient {
   static async deleteTodo(id: string, token: string) {
     const { data, error } = await this.post(
       TodoEndPoints.DELETE_TODO.replace(":id", id),
+      {},
       {
         ...(token && { authorization: `Bearer ${token}` }),
       }
