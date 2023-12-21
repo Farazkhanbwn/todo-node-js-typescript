@@ -7,10 +7,10 @@
     "node": ">=20.9.0"
   },
   "scripts": {
-    "start": "node dist/src/index.js",
-    "dev": "nodemon",
-    "build": "rimraf ./build && tsc",
-    "start:server": "npm run build && npm run start"
+    "start": "node init && node dist/src/index.js",
+    "dev": "node init && nodemon",
+    "build": "node init && rimraf ./build && tsc",
+    "start:server": "node init && npm run build && npm run start"
   },
   "keywords": [],
   "author": "",

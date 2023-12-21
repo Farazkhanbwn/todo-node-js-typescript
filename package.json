@@ -1,0 +1,14 @@
+{
+  "name": "todo-node-js-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev-server": "node init && npm --prefix=server run dev",
+    "dev-client": "node init && cd client && npm run dev",
+    "dev": "node init && npx npm-run-all --parallel dev-client dev-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

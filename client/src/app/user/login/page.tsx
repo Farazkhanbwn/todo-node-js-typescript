@@ -36,6 +36,7 @@ const Login = () => {
     <div className="flex justify-center mt-24">
       <form method="post">
         <h1 className="mb-5 font-bold text-2xl">Login</h1>
+
         <CustomInputField
           type={CustomInputFieldType.TEXT}
           placeholder="Enter Your Email"

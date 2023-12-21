@@ -9,7 +9,6 @@ export const validateToken = (
   const token = req.headers?.authorization;
 
   const { isTokenValid } = JWTTokenValidation(token?.slice(7) || "");
-  console.log("isTokenValid ", isTokenValid);
 
   if (!isTokenValid) {
     return res.status(401).json({ error: "Unauthorized: Invalid token" });

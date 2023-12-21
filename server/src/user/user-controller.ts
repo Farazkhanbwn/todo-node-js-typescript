@@ -48,7 +48,11 @@ export const loginController = async (req: Request, res: Response) => {
       return res.status(404).json({ data: null, error: "Incoreect Password" });
     }
 
-    const token = getJWTSignedToken({ userId: user._id.toString() });
+    const token = getJWTSignedToken({
+      userName: user.name,
+      gender: user.gender,
+      email: user.email,
+    });
     return res.status(200).json({ error: null, data: { token } });
   } catch (error) {
     return res
@@ -60,6 +64,5 @@ export const loginController = async (req: Request, res: Response) => {
 export const userAuthenticationStatus = async (req: Request, res: Response) => {
   const token = req.headers.authorization || "";
   const { isTokenValid } = isJWTTokenValid(token.slice(7));
-  // return sendServerResponse(res, { isValidUser: isTokenValid });
-  res.status(200).json({ error: null, data: isTokenValid });
+  return res.status(200).json({ error: null, data: isTokenValid });
 };
