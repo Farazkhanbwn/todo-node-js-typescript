@@ -14,9 +14,8 @@ const AuthContainer: FC<PropsWithChildren> = ({ children }) => {
   const checkAuthOnLoad = async () => {
     const token = localStorage.getItem("token");
     const data = await AuthService.validateUser(token ?? "");
-    console.log("data is ", data);
     // Testing
-    !data.data && router.push("/auth/login");
+    !data.data && router.push("/");
     setAuthState((prevState) => ({
       ...prevState,
       loading: false,
@@ -46,7 +45,6 @@ const AuthContainer: FC<PropsWithChildren> = ({ children }) => {
     gender: string,
     password: string
   ) => {
-    console.log("name ", name);
     const { data, error } = await AuthService.signUp({
       name,
       email,

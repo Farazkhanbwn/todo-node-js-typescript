@@ -29,7 +29,7 @@ class HttpClient {
         ...headerConfig,
         ...headers,
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(body ?? {}),
     });
     const responseObject = await request.json();
     return responseObject;
