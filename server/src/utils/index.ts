@@ -61,7 +61,7 @@ export const JWTTokenValidation = (token: string) => {
 
   try {
     const decodedData = jwt.verify(token, JWT_SECRET) as jwt.JwtPayload;
-    const isUserIdValid = !!decodedData.userId;
+    const isUserIdValid = !!decodedData.email;
     const currentTime = Math.floor(Date.now() / 1000);
     const isTokenExpired = (decodedData.exp ?? 0) <= currentTime;
 

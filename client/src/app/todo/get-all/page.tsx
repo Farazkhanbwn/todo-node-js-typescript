@@ -3,10 +3,14 @@ import { useAuthContext } from "@/shared/context/auth-context/auth-context";
 import React, { useEffect } from "react";
 import useTodo from "@/shared/hooks/todo-hook/useTodo";
 import "../todo.css";
+import { getTokenValues } from "@/shared/utils";
 
 const GetAll = () => {
   const { getAuthToken } = useAuthContext();
   const { getAllTodos, todos, deleteTodo } = useTodo();
+
+  const data = getTokenValues();
+  console.log("token values ", data);
 
   useEffect(() => {
     getAllTodos(getAuthToken());
@@ -22,6 +26,7 @@ const GetAll = () => {
 
   return (
     <div>
+      <h1>UserName : </h1>
       <h2 className="font-bold m-5">All Todos</h2>
 
       <table className="mb-5">
